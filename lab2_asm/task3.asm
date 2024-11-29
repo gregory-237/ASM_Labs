@@ -11,7 +11,14 @@ main:
     ; x = arctan(2^b) - a
     fld dword[b]       
     fld1                      
-    fscale             
+    fyl2x
+    fld1
+    fld st1
+    fprem
+    f2xm1
+    fadd
+    fscale
+    fstp st1             
     fld1           
     fpatan
     fsub dword[a]       
